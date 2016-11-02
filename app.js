@@ -53,7 +53,7 @@ app.get("/api/imagesearch/:term", function(request, response){
 app.get("/api/latest/imagesearch", function(request, response){		
 
 	SearchShema.find({})
-	.sort({'created': -1})
+	.sort({'created': 1})
 	.limit(10)
 	.exec(function(error, results) {
 		if(error){
