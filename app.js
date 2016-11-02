@@ -3,7 +3,7 @@ var app = express();
 var utils = require("./lib/utils.js");
 
 // Bing Search client
-var bingSearch = new (require('bing.search'))("plEq0NctaKIEfjl0ltpPloLhUQqY6y8dzuPEpqesvL0");
+var bingSearch = new (require('bing.search'))(process.env.API_KEY);
 
 //DB Schema
 var SearchShema = require("./lib/schema.js");
