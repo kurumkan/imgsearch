@@ -7,5 +7,5 @@
 *  I can get a list of the most recently submitted search strings.
 
 
-See the <a href="" target="_blank">demo</a>.
+See the <a href="https://kurumkan-imgsearch.herokuapp.com/" target="_blank">demo</a>.
 The demo will be available soon.
