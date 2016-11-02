@@ -1,38 +1,28 @@
-var express = require("express");
+var express= require("express");
 var app = express();
-var moment = require('moment');
+var utils = require("./lib/utils.js");
 
-//dates with these formats could be parsed correctly
-var formats = ["MMMM DD YYYY", "MMMM YYYY DD", "YYYY DD MMMM", "YYYY MMMM DD", "DD YYYY MMMM", "DD MMMM YYYY",
-			   "YYYY M DD", "YYYY DD M", "M DD YYYY", "M YYYY DD", "DD YYYY M", "DD M YYYY"];
-
-//app config
+var DB = require("./lib/schema.js");
+app.disable('x-powered-by');
+app.use(express.static(__dirname + '/public'));
 app.set("view engine", "ejs");
 
-app.get("/", function(request, response){
-	response.render("index");
+//our db schema
+var ImgSearch = DB.ImgSearch;
+
+app.get("/", function(request, response){		
+	response.render("index");	
 });
 
-app.get("/:date", function(request, response){	
+//404 error handler
+app.use(function(request, response){	
+	response.status(404);
+	response.render("404");
+});
 
-	var dateParam = request.params.date;
-	
-	var date = null;
-
-	if(!isNaN(dateParam)){
-		//dateParam was a number
-		date = moment.unix(dateParam).utc();		
-	}else{				
-		date = moment.utc(dateParam, formats);								
-	}	
-	
-	if(date.isValid()){
-		//passed data was correct
-		response.json({unix: +date.format("X"), natural: date.format("MMMM D, YYYY")});	
-	}else{
-		//passed data was incorrect
-		response.json({unix: null, natural: null});	
-	}	
+//500 error handler
+app.use(function(error, request, response, next){
+	utils.handle500(error, response);
 });
 
 //if Process env port is not defined - set 5000 as a port

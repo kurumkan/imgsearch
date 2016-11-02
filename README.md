@@ -1,7 +1,11 @@
-#Node js  Timestamp Microservice
+#Node js/Express Image Search Abstraction Layer
 
-+ I can pass a string as a parameter, and it will check to see whether that string contains either a unix timestamp or a natural language date (example: January 1, 2016)
-+ If it does, it returns both the Unix timestamp and the natural language form of that date.
-+ If it does not contain a date or Unix timestamp, it returns null for those properties.
+##User Stories
 
-See the <a href="https://timestampkurumkan.herokuapp.com/" target="_blank">demo</a>.
+*  I can get the image URLs, alt text and page urls for a set of images relating to a given search string.
+*  I can paginate through the responses by adding a ?offset=2 parameter to the URL.
+*  I can get a list of the most recently submitted search strings.
+
+
+See the <a href="" target="_blank">demo</a>.
+The demo will be available soon.
