@@ -13,7 +13,7 @@ app.use(express.static(__dirname + '/public'));
 app.set("view engine", "ejs");
 
 app.get("/", function(request, response){		
-	response.render("index");	
+	response.render("index", {host: "http://"+request.headers.host});	
 });
 
 //search query route
